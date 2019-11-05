@@ -10,7 +10,9 @@ const UserItem = ({ user: { login, avatar_url, html } }) => {
         style={{ width: "60px" }}
       />
       <h2>{login}</h2>
-      <a href={html}>Click</a>
+      <a href={html} className="btn btn-dark my-1">
+        Click
+      </a>
     </div>
   );
 };
