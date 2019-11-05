@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UserItem from "./UserItem";
 
 class Users extends Component {
   state = {
@@ -27,12 +28,7 @@ class Users extends Component {
     return (
       <div>
         {this.state.users.map(user => (
-          <img
-            src={user.avatar_url}
-            className="round-img"
-            alt=""
-            style={{ width: "60px" }}
-          />
+          <UserItem key={user.id} user={user} />
         ))}
       </div>
     );
