@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Navbar from "./comonents/layout/Navbar";
 import Users from "./comonents/users/Users";
 import Search from "./comonents/users/Search";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 
@@ -39,17 +40,29 @@ class App extends Component {
   render() {
     const { users, loading } = this.state;
     return (
-      <div className="App">
-        <Navbar />
-        <div className="container">
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            setAlert={this.setAlert}
-          />
-          <Users loading={loading} users={users} />
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <Fragment>
+                    <Search
+                      searchUsers={this.searchUsers}
+                      clearUsers={this.clearUsers}
+                      setAlert={this.setAlert}
+                    />
+                    <Users loading={loading} users={users} />
+                  </Fragment>
+                )}
+              />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
