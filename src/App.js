@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Navbar from "./comonents/layout/Navbar";
 import Users from "./comonents/users/Users";
 import Search from "./comonents/users/Search";
+import About from "./comonents/pages/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
@@ -59,6 +60,7 @@ class App extends Component {
                   </Fragment>
                 )}
               />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </div>
