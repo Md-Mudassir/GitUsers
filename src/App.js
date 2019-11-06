@@ -8,7 +8,8 @@ import "./App.css";
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
   // async componentDidMount() {
   //   this.setState({ loading: true });
@@ -30,13 +31,22 @@ class App extends Component {
   //clear users
   clearUsers = () => this.setState({ users: [], loading: false });
 
+  //Alert
+  setAlert = msg => {
+    this.setState({ alert: { msg } });
+  };
+
   render() {
     const { users, loading } = this.state;
     return (
       <div className="App">
         <Navbar />
         <div className="container">
-          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            setAlert={this.setAlert}
+          />
           <Users loading={loading} users={users} />
         </div>
       </div>
