@@ -44,9 +44,9 @@ class App extends Component {
   getUser = async username => {
     this.setState({ loading: true });
     const res = await axios.get(
-      `https://api.github.com/users?${username}?client_id=${process.env.Client_ID}&client_secret=${process.env.Client_Secret}`
+      `https://api.github.com/users/${username}?client_id=${process.env.Client_ID}&client_secret=${process.env.Client_Secret}`
     );
-    this.setState({ users: res.data.items, loading: false });
+    this.setState({ user: res.data, loading: false });
   };
 
   render() {
