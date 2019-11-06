@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "./comonents/layout/Navbar";
 import Users from "./comonents/users/Users";
+import User from "./comonents/users/User";
 import Search from "./comonents/users/Search";
 import About from "./comonents/pages/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,6 +11,7 @@ import "./App.css";
 class App extends Component {
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null
   };
@@ -38,8 +40,17 @@ class App extends Component {
     this.setState({ alert: { msg } });
   };
 
+  //Get user
+  getUser = async username => {
+    this.setState({ loading: true });
+    const res = await axios.get(
+      `https://api.github.com/users?${username}?client_id=${process.env.Client_ID}&client_secret=${process.env.Client_Secret}`
+    );
+    this.setState({ users: res.data.items, loading: false });
+  };
+
   render() {
-    const { users, loading } = this.state;
+    const { users, user, loading } = this.state;
     return (
       <Router>
         <div className="App">
@@ -58,6 +69,18 @@ class App extends Component {
                     />
                     <Users loading={loading} users={users} />
                   </Fragment>
+                )}
+              />
+              <Route
+                exact
+                path="/user/:login"
+                render={props => (
+                  <User
+                    {...props}
+                    getUser={this.getUser}
+                    user={user}
+                    loading={loading}
+                  />
                 )}
               />
               <Route exact path="/about" component={About} />
