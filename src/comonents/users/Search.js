@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import GithubContext from "../../context/github/githubContext";
 
-const Search = ({ setAlert, searchUsers, clearUsers }) => {
+const Search = ({ setAlert, clearUsers }) => {
+  const githubContext = useContext(GithubContext);
+
   const [text, setText] = useState("");
 
   const onChange = e => {
@@ -12,7 +15,7 @@ const Search = ({ setAlert, searchUsers, clearUsers }) => {
     if (text === "") {
       setAlert(console.log("Enter username"));
     } else {
-      searchUsers(text);
+      githubContext.searchUsers(text);
       setText("");
     }
   };

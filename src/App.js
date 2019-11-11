@@ -74,7 +74,7 @@ const App = () => {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="container">
+          <div className="container">   
             <Switch>
               <Route
                 exact
@@ -82,11 +82,11 @@ const App = () => {
                 render={props => (
                   <Fragment>
                     <Search
-                      searchUsers={searchUsers}
+                     
                       clearUsers={clearUsers}
                       setAlert={showAlert}
                     />
-                    <Users loading={loading} users={users} />
+                    <Users/>
                   </Fragment>
                 )}
               />
