@@ -36,7 +36,10 @@ const Search = ({ setAlert, clearUsers }) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      <button className="btn btn-light btn-block" onClick={clearUsers}>
+      <button
+        className="btn btn-light btn-block"
+        onClick={githubContext.clearUsers}
+      >
         Clear
       </button>
     </div>
