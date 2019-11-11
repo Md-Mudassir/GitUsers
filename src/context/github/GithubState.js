@@ -1,19 +1,19 @@
-import React, { useReducer } from 'react';
-import axios from 'axios';
-import GithubContext from './githubContext';
-import GithubReducer from './githubReducer';
+import React, { useReducer } from "react";
+import axios from "axios";
+import GithubContext from "./githubContext";
+import GithubReducer from "./githubReducer";
 import {
   SEARCH_USERS,
   SET_LOADING,
   CLEAR_USERS,
   GET_USER,
   GET_REPOS
-} from '../types';
+} from "../types";
 
 let githubClientId;
 let githubClientSecret;
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
   githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
 } else {
@@ -75,7 +75,6 @@ const GithubState = props => {
 
   // Clear Users
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
-
 
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
