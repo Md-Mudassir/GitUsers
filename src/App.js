@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import Navbar from "./comonents/layout/Navbar";
 import Users from "./comonents/users/Users";
 import User from "./comonents/users/User";
@@ -9,13 +9,6 @@ import GithubState from "./context/github/GithubState";
 import "./App.css";
 
 const App = () => {
-  const [setAlert] = useState(null);
-
-  //Alert
-  const showAlert = msg => {
-    setAlert({ msg });
-  };
-
   return (
     <GithubState>
       <Router>
@@ -26,9 +19,9 @@ const App = () => {
               <Route
                 exact
                 path="/"
-                render={props => (
+                render={() => (
                   <Fragment>
-                    <Search setAlert={showAlert} />
+                    <Search />
                     <Users />
                   </Fragment>
                 )}

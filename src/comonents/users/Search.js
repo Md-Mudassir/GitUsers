@@ -12,12 +12,9 @@ const Search = ({ setAlert, clearUsers }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (text === "") {
-      setAlert(console.log("Enter username"));
-    } else {
-      githubContext.searchUsers(text);
-      setText("");
-    }
+
+    githubContext.searchUsers(text);
+    setText("");
   };
 
   return (
